@@ -1,0 +1,196 @@
+:root {
+  --sz: 100%;
+  --vw: 100vw;
+  --svh: 100svh;
+  --x: 6rem;
+  --y: 10rem;
+  --gap: .5rem;
+  --pd: 1.25rem;
+  --btn-sz: 3rem;
+  --fnt-sz: clamp(calc(var(--pd) * 1.125), calc(1.06rem + 0.33vw), 1.31rem);
+  --main-color: hsl(507 35% 85%);
+  --secondary-color: hsl(10 25% 75%);
+  --hover-color: hsl(100 25% 85%);
+  --main-fnt: "Smooch Sans", sans-serif;
+  --secondary-fnt: "Quicksand", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* reset */
+:where(html, body, figure, button, h2, p) {
+  margin: 0;
+  padding: 0
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer
+}
+
+a {
+  color: hsl(175 85% 65%);
+  font-weight: 600;
+}
+
+img {
+  max-width: var(--sz);
+  height: var(--sz);
+  object-fit: cover;
+}
+
+/* flexbox */
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+:where(.absolute) {
+  position: absolute;
+}
+
+:where(.image--container, .image--info, .buttons, .background, .caption, .xl, .sm) {
+  width: var(--sz);
+}
+
+.image--container {
+  position: relative;
+  height: var(--svh);
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.buttons {
+  justify-content: space-around;
+  max-width: 25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 4%;
+  z-index: 1;
+  .btn {
+    justify-content: center;
+    padding: 0;
+    font-size: calc(var(--fnt-sz) * 1.025);
+    color: var(--main-color);
+    transition: transform 200ms ease;
+    &:hover { transform: scale(1.125); }
+    &:active { transform: scale(.98); }
+  }
+}
+
+.image--info {
+  position: absolute;
+  transition: transform 400ms cubic-bezier(.982, .92, .92, .982);
+  .background {
+    justify-content: center;
+    .xl--image {
+      height: var(--svh);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: blur(.5rem);
+      transition: filter 500ms ease 400ms;
+      &.slide--fade {
+        filter: blur(0);
+        transition: filter 400ms ease-in 700ms;
+      }
+    }
+  }
+  .caption {
+    bottom: calc(var(--btn-sz) * 2.35);
+    & :is(h2, p) { padding-inline-start: 1rem; }
+    & :is(.info, .description) { color: var(--secondary-color) }
+    .heading {
+      color: var(--main-color);
+      font: 400 clamp(calc(var(--pd) * 1.125), 5vmin, calc(var(--pd) * 1.5)) var(--main-fnt);
+      & span {
+        --y: calc(45pt * .35);
+        display: inline-block;
+        font-family: var(--main-fnt);
+        transform: translateY(var(--y));
+        opacity: 0;
+        transition: opacity 200ms eae-in, transform 300ms ease 200ms;
+        &.fade {
+          opacity: 1;
+          transform: translateY(0);
+          transition: opacity 400ms ease-in-out, transform 200ms cubic-bezier(.75, -.156, .0154, .75) 100ms;
+        }
+      }
+    }
+    .description {
+      margin-block-start: .75rem;
+      font: 600 1rem var(--secondary-fnt);
+      /* transform: translateY(2rem);
+      opacity: 0; */
+      transition: transform 0ms ease, opacity 0ms ease-in;
+      &.fade--up { transition: opacity 500ms ease-out, transform 400ms; }
+    }
+    .info {
+      font: 600 .85rem var(--secondary-fnt);
+      &.fade--up { transition: opacity 400ms ease-in, transform 300ms; }
+    }
+    & :where(.description, .info) {
+      &.fade--up {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+  }
+}
+
+.portrait {
+  width: calc(var(--x) * 3.5);
+  height: calc(var(--y) * 1.25);
+  justify-content: flex-start;
+  right: 20%;
+  bottom: calc(var(--btn-sz) * 5);
+  gap: calc(var(--gap) * 1.05);
+  .sm--image {
+    width: 2rem;
+    aspect-ratio : 5 / 3;
+    border-radius: 1rem;
+    transition: transform 300ms ease-in-out 100ms;
+    &.active { 
+      width: inherit;
+      border-radius: var(--gap);
+      transform: scale(1.15) translateX(calc(var(--gap) * -2.75));
+      transition: transform 200ms ease-in;
+    }
+  }
+
+  @media (width <=30.3125em) {
+    & {
+      width: calc(var(--x) * 2.5);
+      height: calc(var(--y) * .9)
+    }
+  }
+}
+
+.dots {
+  justify-content: space-around;
+  flex-direction: column;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  z-index: 1;
+  .dot {
+    display: block;
+    width: var(--gap);
+    height: var(--gap);
+    background-color: hsla(507, 35%, 85%, .5);
+    border-radius: var(--sz);
+    margin: .2rem 0;
+    cursor: pointer;
+    &.active {
+      height: var(--pd);
+      border-radius: var(--gap);
+      background-color: var(--main-color);
+    }
+  }
+}

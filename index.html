@@ -25,6 +25,7 @@
   </head>
   <body>
     <div class="container">
+      <!-- buttons container -->
       <div class="flex absolute buttons">
         <button class="flex btn" data-state="prev">
           <i class="fa-solid fa-chevron-left"></i>
@@ -33,16 +34,16 @@
           <i class="fa-solid fa-chevron-right"></i>
         </button>
       </div>
-      <!-- buttons container -->
-      <section class="flex hidden image--container">
+      <!-- image container -->
+      <section class="flex image--container">
         <figure class="image--info" data-image-info>
           <div class="flex background">
             <div class="xl xl--image" style="background-image: url('../assets/images/large-image-1.jpg');" data-image="image"></div>
           </div>
           <figcaption class="absolute caption">
             <h2 class="heading" data-title>Nature Reserve - NEOM, Saudi Arabia</h2>
-            <p class="info" data-info>A person standing on top of a mountain at sunset, in the NEOM nature reserve, Saudi Arabia.</p>
-            <p class="description" data-user>Photo by <a href="https://unsplash.com/es/@neom?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">NEOM</a> on <a href="https://unsplash.com/es/fotos/una-persona-parada-en-la-cima-de-una-montana-al-atardecer-anozjF6uqI0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">unsplash</a></p>
+            <p class="description" data-description>A person standing on top of a mountain at sunset, in the NEOM nature reserve, Saudi Arabia.</p>
+            <p class="info" data-info>Photo by <a href="https://unsplash.com/es/@neom?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">NEOM</a> on <a href="https://unsplash.com/es/fotos/una-persona-parada-en-la-cima-de-una-montana-al-atardecer-anozjF6uqI0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">unsplash</a></p>
           </figcaption>
         </figure>
 
@@ -52,8 +53,8 @@
           </div>
           <figcaption class="absolute caption">
             <h2 class="heading" data-title>Hisma Desert - NEOM, Saudi Arabia</h2>
-            <p class="info" data-info="">Person looking out from a cave in the desert.</p>
-            <p class="description" data-user>Photo by <a href="https://unsplash.com/es/@neom?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">NEOM</a> on
+            <p class="description" data-description="">Person looking out from a cave in the desert.</p>
+            <p class="info" data-info>Photo by <a href="https://unsplash.com/es/@neom?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">NEOM</a> on
               <a href="https://unsplash.com/es/fotos/una-persona-mirando-desde-una-cueva-en-el-desierto-9bE0LlCrX2M?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">unsplash</a></p>
           </figcaption>
         </figure>
@@ -64,8 +65,8 @@
           </div>
           <figcaption class="absolute caption">
             <h2 class="heading" data-title>Baltimore, MD - USA</h2>
-            <p class="info" data-info>A leaf lying on the ground in the middle of a road.</p>
-            <p class="description" data-user>Photo by <a href="https://unsplash.com/es/@aaronburden?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Aaron Burden</a> on
+            <p class="description" data-description>A leaf lying on the ground in the middle of a road.</p>
+            <p class="info" data-info>Photo by <a href="https://unsplash.com/es/@aaronburden?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Aaron Burden</a> on
               <a href="https://unsplash.com/es/fotos/una-hoja-esta-tirada-en-el-suelo-en-medio-del-camino-DIi8kbZZmKQ?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">unsplash</a></p>
           </figcaption>
         </figure>
@@ -76,24 +77,22 @@
           </div>
           <figcaption class="absolute caption">
             <h2 class="heading" data-title>Saint Kilda Road, Melbourne - Australia</h2>
-            <p class="info" data-info="">Person standing in front of a Melbourne art exhibition.</p>
-            <p class="description" data-user>Photo by <a href="https://unsplash.com/es/@thomaspavitte?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Thomas Pavitte</a> on
+            <p class="description" data-description="">Person standing in front of a Melbourne art exhibition.</p>
+            <p class="info" data-info>Photo by <a href="https://unsplash.com/es/@thomaspavitte?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Thomas Pavitte</a> on
               <a href="https://unsplash.com/es/fotos/una-mujer-parada-frente-a-un-semaforo-en-rojo-4f7VHiCiiCE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">unsplash</a></p>
           </figcaption>
         </figure>
       </section>
-      <!-- image container -->
-
+      <!-- portrait container -->
       <section class="flex absolute portrait">
         <img class="sm sm--image active" src="../assets/images/small-image-1.jpg" alt="Nature Reserve - Saudi Arabia" data-slider="image"/>
         <img class="sm sm--image" src="../assets/images/small-image-2.jpg" alt="Hisma Desert - Saudi Arabia" data-slider="image"/>
         <img class="sm sm--image" src="../assets/images/small-image-3.jpg" alt="Baltimore, MD - USA" data-slider="image"/>
         <img class="sm sm--image" src="../assets/images/small-image-4.jpg" alt="Saint Kilda Road, Australia" data-slider="image"/>
       </section> 
-      <!-- portrait container -->
+      <!-- dots container -->
       <div class="flex absolute dots" data-navigation>
         <div class="dot active"></div>
-        <div class="dot"></div>
         <div class="dot"></div>
         <div class="dot"></div>
         <div class="dot"></div>

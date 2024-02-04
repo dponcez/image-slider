@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Basic Page Needs -->
+    <meta charset="UTF-8" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Slider</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Smooch+Sans:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="flex absolute buttons">
+        <button class="flex btn" data-state="prev">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="flex btn" data-state="next">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+      <!-- buttons container -->
+      <section class="flex hidden image--container">
+        <figure class="image--info" data-image-info>
+          <div class="flex background">
+            <div class="xl xl--image" style="background-image: url('../assets/images/large-image-1.jpg');" data-image="image"></div>
+          </div>
+          <figcaption class="absolute caption">
+            <h2 class="heading" data-title>Nature Reserve - NEOM, Saudi Arabia</h2>
+            <p class="info" data-info>A person standing on top of a mountain at sunset, in the NEOM nature reserve, Saudi Arabia.</p>
+            <p class="description" data-user>Photo by <a href="https://unsplash.com/es/@neom?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">NEOM</a> on <a href="https://unsplash.com/es/fotos/una-persona-parada-en-la-cima-de-una-montana-al-atardecer-anozjF6uqI0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">unsplash</a></p>
+          </figcaption>
+        </figure>
+
+        <figure class="image--info" data-image-info>
+          <div class="flex background">
+            <div class="xl xl--image" style="background-image: url('../assets/images/large-image-2.jpg');" data-image="image"></div>
+          </div>
+          <figcaption class="absolute caption">
+            <h2 class="heading" data-title>Hisma Desert - NEOM, Saudi Arabia</h2>
+            <p class="info" data-info="">Person looking out from a cave in the desert.</p>
+            <p class="description" data-user>Photo by <a href="https://unsplash.com/es/@neom?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">NEOM</a> on
+              <a href="https://unsplash.com/es/fotos/una-persona-mirando-desde-una-cueva-en-el-desierto-9bE0LlCrX2M?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">unsplash</a></p>
+          </figcaption>
+        </figure>
+
+        <figure class="image--info" data-image-info>
+          <div class="flex background">
+            <div class="xl xl--image" style="background-image: url('../assets/images/large-image-3.jpg');" data-image="image"></div>
+          </div>
+          <figcaption class="absolute caption">
+            <h2 class="heading" data-title>Baltimore, MD - USA</h2>
+            <p class="info" data-info>A leaf lying on the ground in the middle of a road.</p>
+            <p class="description" data-user>Photo by <a href="https://unsplash.com/es/@aaronburden?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Aaron Burden</a> on
+              <a href="https://unsplash.com/es/fotos/una-hoja-esta-tirada-en-el-suelo-en-medio-del-camino-DIi8kbZZmKQ?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">unsplash</a></p>
+          </figcaption>
+        </figure>
+
+        <figure class="image--info" data-image-info>
+          <div class="flex background">
+            <div class="xl xl--image" style="background-image: url('../assets/images/large-image-4.jpg');" data-image="image"></div>
+          </div>
+          <figcaption class="absolute caption">
+            <h2 class="heading" data-title>Saint Kilda Road, Melbourne - Australia</h2>
+            <p class="info" data-info="">Person standing in front of a Melbourne art exhibition.</p>
+            <p class="description" data-user>Photo by <a href="https://unsplash.com/es/@thomaspavitte?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Thomas Pavitte</a> on
+              <a href="https://unsplash.com/es/fotos/una-mujer-parada-frente-a-un-semaforo-en-rojo-4f7VHiCiiCE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">unsplash</a></p>
+          </figcaption>
+        </figure>
+      </section>
+      <!-- image container -->
+
+      <section class="flex absolute portrait">
+        <img class="sm sm--image active" src="../assets/images/small-image-1.jpg" alt="Nature Reserve - Saudi Arabia" data-slider="image"/>
+        <img class="sm sm--image" src="../assets/images/small-image-2.jpg" alt="Hisma Desert - Saudi Arabia" data-slider="image"/>
+        <img class="sm sm--image" src="../assets/images/small-image-3.jpg" alt="Baltimore, MD - USA" data-slider="image"/>
+        <img class="sm sm--image" src="../assets/images/small-image-4.jpg" alt="Saint Kilda Road, Australia" data-slider="image"/>
+      </section> 
+      <!-- portrait container -->
+      <div class="flex absolute dots" data-navigation>
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>

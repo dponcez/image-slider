@@ -62,17 +62,14 @@ img {
 .image--container {
   position: relative;
   height: var(--svh);
-  justify-content: flex-start;
   overflow: hidden;
 }
 
 .buttons {
-  justify-content: space-around;
-  max-width: 25rem;
-  left: 50%;
-  transform: translateX(-50%);
+  justify-content: space-evenly;
+  max-width: 20rem;
   bottom: 4%;
-  z-index: 1;
+  z-index: 3;
   .btn {
     justify-content: center;
     padding: 0;
@@ -87,6 +84,7 @@ img {
 .image--info {
   position: absolute;
   transition: transform 400ms cubic-bezier(.982, .92, .92, .982);
+  &.active { z-index: 2 }
   .background {
     justify-content: center;
     .xl--image {
@@ -108,7 +106,7 @@ img {
     & :is(.info, .description) { color: var(--secondary-color) }
     .heading {
       color: var(--main-color);
-      font: 400 clamp(calc(var(--pd) * 1.125), 5vmin, calc(var(--pd) * 1.5)) var(--main-fnt);
+      font: 300 clamp(calc(var(--pd) * 1.125), 5vmin, calc(var(--pd) * 1.5)) var(--main-fnt);
       & span {
         --y: calc(45pt * .35);
         display: inline-block;
@@ -126,13 +124,15 @@ img {
     .description {
       margin-block-start: .75rem;
       font: 600 1rem var(--secondary-fnt);
-      /* transform: translateY(2rem);
-      opacity: 0; */
+      transform: translateY(1rem);
+      opacity: 0;
       transition: transform 0ms ease, opacity 0ms ease-in;
       &.fade--up { transition: opacity 500ms ease-out, transform 400ms; }
     }
     .info {
       font: 600 .85rem var(--secondary-fnt);
+      transform: translateY(1rem);
+      opacity: 0;
       &.fade--up { transition: opacity 400ms ease-in, transform 300ms; }
     }
     & :where(.description, .info) {
@@ -151,13 +151,14 @@ img {
   right: 20%;
   bottom: calc(var(--btn-sz) * 5);
   gap: calc(var(--gap) * 1.05);
+  z-index: 3;
   .sm--image {
-    width: 2rem;
+    width: var(--pd);
     aspect-ratio : 5 / 3;
     border-radius: 1rem;
     transition: transform 300ms ease-in-out 100ms;
-    &.active { 
-      width: inherit;
+    &.active {
+      width: calc(var(--x) * 3.5);
       border-radius: var(--gap);
       transform: scale(1.15) translateX(calc(var(--gap) * -2.75));
       transition: transform 200ms ease-in;
@@ -167,7 +168,11 @@ img {
   @media (width <=30.3125em) {
     & {
       width: calc(var(--x) * 2.5);
-      height: calc(var(--y) * .9)
+      height: calc(var(--y) * .9);
+      .sm--image { 
+        width: calc(var(--pd) * .5);
+        &.active { width: calc(var(--x) * 2.5) }
+      }
     }
   }
 }

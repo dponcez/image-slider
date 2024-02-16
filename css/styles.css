@@ -8,9 +8,8 @@
   --pd: 1.25rem;
   --btn-sz: 3rem;
   --fnt-sz: clamp(calc(var(--pd) * 1.125), calc(1.06rem + 0.33vw), 1.31rem);
-  --main-color: hsl(507 35% 85%);
-  --secondary-color: hsl(10 25% 75%);
-  --hover-color: hsl(100 25% 85%);
+  --main-color: hsl(145 14% 73%);
+  --secondary-color: hsl(16 42% 90%);
   --main-fnt: "Smooch Sans", sans-serif;
   --secondary-fnt: "Quicksand", sans-serif;
 }
@@ -59,6 +58,10 @@ img {
   width: var(--sz);
 }
 
+:where(.buttons, .portrait, .dots) {
+  z-index: 3
+}
+
 .image--container {
   position: relative;
   height: var(--svh);
@@ -69,14 +72,17 @@ img {
   justify-content: space-evenly;
   max-width: 20rem;
   bottom: 4%;
-  z-index: 3;
   .btn {
     justify-content: center;
     padding: 0;
     font-size: calc(var(--fnt-sz) * 1.025);
     color: var(--main-color);
     transition: transform 200ms ease;
-    &:hover { transform: scale(1.125); }
+    opacity: 0.5;
+    &:hover {
+      opacity: 1; 
+      transform: scale(1.125);
+    }
     &:active { transform: scale(.98); }
   }
 }
@@ -89,9 +95,7 @@ img {
     justify-content: center;
     .xl--image {
       height: var(--svh);
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      background: center / cover, no-repeat;
       filter: blur(.5rem);
       transition: filter 500ms ease 400ms;
       &.slide--fade {
@@ -101,9 +105,9 @@ img {
     }
   }
   .caption {
-    bottom: calc(var(--btn-sz) * 2.35);
-    & :is(h2, p) { padding-inline-start: 1rem; }
-    & :is(.info, .description) { color: var(--secondary-color) }
+    bottom: calc(var(--btn-sz) * 2.125);
+    &:has(h2, p) { padding-inline-start: 1rem; }
+    &:has(.info, .description) { color: var(--secondary-color) }
     .heading {
       color: var(--main-color);
       font: 300 clamp(calc(var(--pd) * 1.125), 5vmin, calc(var(--pd) * 1.5)) var(--main-fnt);
@@ -111,9 +115,10 @@ img {
         --y: calc(45pt * .35);
         display: inline-block;
         font-family: var(--main-fnt);
+        letter-spacing: .5pt;
         transform: translateY(var(--y));
         opacity: 0;
-        transition: opacity 200ms eae-in, transform 300ms ease 200ms;
+        transition: opacity 200ms ease-in, transform 300ms ease 200ms;
         &.fade {
           opacity: 1;
           transform: translateY(0);
@@ -123,58 +128,81 @@ img {
     }
     .description {
       margin-block-start: .75rem;
+      margin-inline-end: 1.5rem;
       font: 600 1rem var(--secondary-fnt);
       transform: translateY(1rem);
-      opacity: 0;
-      transition: transform 0ms ease, opacity 0ms ease-in;
-      &.fade--up { transition: opacity 500ms ease-out, transform 400ms; }
+      &.fade--up { 
+        transition: opacity 200ms cubic-bezier(0.075, 0.82, 0.165, 1), transform 300ms;
+        animation: smooth-up 300ms cubic-bezier(0.215, 0.610, 0.355, 1) 100ms forwards
+      }
     }
     .info {
       font: 600 .85rem var(--secondary-fnt);
-      transform: translateY(1rem);
-      opacity: 0;
-      &.fade--up { transition: opacity 400ms ease-in, transform 300ms; }
-    }
-    & :where(.description, .info) {
-      &.fade--up {
-        opacity: 1;
-        transform: translateY(0)
+      transform: translateY(2rem);
+      &.fade--bottom__up { 
+        transition: opacity 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 500ms;
+        animation: smooth-bottom-up 500ms cubic-bezier(0.455, 0.03, 0.515, 0.955) 200ms forwards
       }
     }
+    & :where(.description, .info) { opacity: 0; }
   }
 }
 
+@keyframes smooth-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    animation-delay: 1s;
+  }
+}
+
+@keyframes smooth-bottom-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    animation-delay: 1.5s;
+  }  
+}
+
 .portrait {
-  width: calc(var(--x) * 3.5);
+  width: calc(var(--x) * 5);
   height: calc(var(--y) * 1.25);
   justify-content: flex-start;
-  right: 20%;
+  right: 5%;
   bottom: calc(var(--btn-sz) * 5);
   gap: calc(var(--gap) * 1.05);
-  z-index: 3;
   .sm--image {
-    width: var(--pd);
-    aspect-ratio : 5 / 3;
+    /* width: var(--pd); */
+    height: inherit;
+    flex: 0.15;
+    /* aspect-ratio : 5 / 3; */
+    background: center / cover, no-repeat;
     border-radius: 1rem;
-    transition: transform 300ms ease-in-out 100ms;
+    filter: blur(.15rem);
+    transition: flex 300ms ease-in-out 100ms, filter 200ms ease;
     &.active {
-      width: calc(var(--x) * 3.5);
-      border-radius: var(--gap);
+      /* width: calc(var(--x) * 3.5); */
+      flex: 5;
+      filter: blur(0);
+      /* border-radius: var(--gap);
       transform: scale(1.15) translateX(calc(var(--gap) * -2.75));
-      transition: transform 200ms ease-in;
+      transition: transform 200ms ease-in; */
     }
   }
 
-  @media (width <=30.3125em) {
+  /* @media (width <= 40.3125em) {
     & {
       width: calc(var(--x) * 2.5);
       height: calc(var(--y) * .9);
       .sm--image { 
         width: calc(var(--pd) * .5);
-        &.active { width: calc(var(--x) * 2.5) }
+        &.active { 
+          width: calc(var(--x) * 2.5);
+          transform: scale(1.075) translateX(calc(var(--gap) * -1.25))
+        }
       }
     }
-  }
+  } */
 }
 
 .dots {
@@ -183,7 +211,6 @@ img {
   top: 50%;
   left: 1rem;
   transform: translateY(-50%);
-  z-index: 1;
   .dot {
     display: block;
     width: var(--gap);

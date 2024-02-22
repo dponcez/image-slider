@@ -16,9 +16,7 @@
 
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
-}
+*::after { box-sizing: border-box; }
 
 /* reset */
 :where(html, body, figure, button, h2, p) {
@@ -50,17 +48,9 @@ img {
   align-items: center;
 }
 
-:where(.absolute) {
-  position: absolute;
-}
-
-:where(.image--container, .image--info, .buttons, .background, .caption, .xl, .sm) {
-  width: var(--sz);
-}
-
-:where(.buttons, .portrait, .dots) {
-  z-index: 3
-}
+:where(.absolute) { position: absolute; }
+:where(.image--container, .image--info, .buttons, .background, .caption, .xl, .sm) { width: var(--sz); }
+:where(.buttons, .portrait, .dots) { z-index: 3; }
 
 .image--container {
   position: relative;
@@ -180,13 +170,8 @@ img {
     }
   }
 
-  @media (width <= 40.3125em) {
-    & { width: calc(var(--x) * 4.5) }
-  }
-
-  @media (width <= 35.25em) {
-    & { width: calc(var(--x) * 4) }
-  }
+  @media (width <= 40.3125em) { & { width: calc(var(--x) * 4.5) } }
+  @media (width <= 35.25em) { & { width: calc(var(--x) * 4) } }
 }
 
 .dots {

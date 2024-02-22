@@ -97,11 +97,6 @@ img {
       height: var(--svh);
       background: center / cover, no-repeat;
       filter: blur(.5rem);
-      transition: filter 500ms ease 400ms;
-      &.slide--fade {
-        filter: blur(0);
-        transition: filter 400ms ease-in 700ms;
-      }
     }
   }
   .caption {
@@ -205,9 +200,10 @@ img {
     width: var(--gap);
     height: var(--gap);
     background-color: hsla(507, 35%, 85%, .5);
-    border-radius: var(--sz);
+    border-radius: var(--gap);
     margin: .2rem 0;
     cursor: pointer;
+    transition: height 300ms ease-in-out;
     &.active {
       height: var(--pd);
       border-radius: var(--gap);

@@ -4,17 +4,18 @@ const initApp = () => {
   const querySelector = (element) => document.querySelector(element);
 
   // event
-  const eventHandler = ($, event, callback) => $.addEventListener(event, callback);
+  const eventHandler = ($, event, callback) =>
+    $.addEventListener(event, callback);
 
   const selectors = {
-    headings: querySelectorAll('[data-title]'),
-    description: querySelectorAll('[data-description]'),
-    userInfo: querySelectorAll('[data-user-info'),
-    imageInfoContainer: querySelectorAll('[data-image-info]'),
-    images: querySelectorAll('[data-expand-image]'),
-    buttons: querySelectorAll('[data-state]'),
-    dotContainer: querySelector('[data-navigation]')
-  }
+    headings: querySelectorAll("[data-title]"),
+    description: querySelectorAll("[data-description]"),
+    userInfo: querySelectorAll("[data-user-info"),
+    imageInfoContainer: querySelectorAll("[data-image-info]"),
+    images: querySelectorAll("[data-expand-image]"),
+    buttons: querySelectorAll("[data-state]"),
+    dotContainer: querySelector("[data-navigation]"),
+  };
 
   const {
     headings,
@@ -23,82 +24,80 @@ const initApp = () => {
     imageInfoContainer,
     images,
     buttons,
-    dotContainer
-  } = selectors
+    dotContainer,
+  } = selectors;
 
   let index = 0;
   const LENGTH = imageInfoContainer.length - 1;
 
   // slider buttons
-  buttons.forEach(button => {
-    eventHandler(button, 'click', () => {
-      button.dataset.state === 'next' ?
-        index++ : index--;
+  buttons.forEach((button) => {
+    eventHandler(button, "click", () => {
+      button.dataset.state === "next" ? index++ : index--;
 
-      index > LENGTH ?
-        index = 0 :
-        index < 0 ?
-        index = LENGTH : 0;
-      
-        headingAnimation();
-        updateActiveClass(index);
-        updateImageSlider(index)
-    })
-  })
+      index > LENGTH ? (index = 0) : index < 0 ? (index = LENGTH) : 0;
+
+      headingAnimation();
+      updateActiveClass(index);
+      updateImageSlider(index);
+    });
+  });
 
   // text animation
   const headingAnimation = () => {
-    headings.forEach(text => {
+    headings.forEach((text) => {
       const string = text.textContent;
-      const split = string.split('');
+      const split = string.split("");
 
       let char = 0;
       let timeout = 30;
 
-      text.textContent = '';
+      text.textContent = "";
 
-      split.forEach(element => text.innerHTML += `<span>${element}</span>`);
+      split.forEach((element) => (text.innerHTML += `<span>${element}</span>`));
 
       const showAnimation = () => {
-        const span = querySelectorAll('span')[char];
-        span.classList.add('fade');
+        const span = querySelectorAll("span")[char];
+        span.classList.add("fade");
         char++;
 
-        description.forEach(para => {
-          if(para.classList.contains('fade--up')){
-            para.classList.remove('fade--up')
+        description.forEach((para) => {
+          if (para.classList.contains("fade--up")) {
+            para.classList.remove("fade--up");
           }
         });
 
-        userInfo.forEach(para => {
-          if(para.classList.contains('fade--bottom__up')){
-            para.classList.remove('fade--bottom__up')
+        userInfo.forEach((para) => {
+          if (para.classList.contains("fade--bottom__up")) {
+            para.classList.remove("fade--bottom__up");
           }
         });
 
-        
+        let initValue = 48;
+
+        // get maximum length
         const length = split
-          .map(string => parseInt(string.length + 1))
-          .filter(index => index)
-          .reduce((acc, cur) => acc + cur, 48);
+          .map((string) => parseInt(string.length + 1))
+          .filter((index) => index)
+          .reduce((acc, cur) => acc + cur, initValue);
 
-        if(char === length){
+        if (char === length) {
           completeAnimation();
-          return
+          return;
         }
-      }
-      
+      };
+
       const completeAnimation = () => {
         clearInterval(interval);
-        description.forEach(para => para.classList.add('fade--up'));
-        userInfo.forEach(para => para.classList.add('fade--bottom__up'));
+        description.forEach((para) => para.classList.add("fade--up"));
+        userInfo.forEach((para) => para.classList.add("fade--bottom__up"));
 
         interval = null;
-      }
+      };
 
-      let interval = setInterval(showAnimation, timeout)
-    })
-  }
+      let interval = setInterval(showAnimation, timeout);
+    });
+  };
 
   headingAnimation();
 
@@ -106,20 +105,20 @@ const initApp = () => {
   const createNavigationDots = () => {
     const createElement = (element) => document.createElement(element);
 
-    for(let i = 0; i < imageInfoContainer.length; i++) {
-      const dot = createElement('div');
-      dot.classList.add('dot');
+    for (let i = 0; i < imageInfoContainer.length; i++) {
+      const dot = createElement("div");
+      dot.classList.add("dot");
       dotContainer.appendChild(dot);
 
-      eventHandler(dot, 'click', () => {
+      eventHandler(dot, "click", () => {
         headingAnimation();
         updateActiveClass(i);
         updateImageSlider(i);
-      })
+      });
     }
 
-    dotContainer.children[0].classList.add('active')
-  }
+    dotContainer.children[0].classList.add("active");
+  };
 
   createNavigationDots();
 
@@ -133,27 +132,27 @@ const initApp = () => {
   };
 
   const updateNavigationDots = (value) => {
-    const currentDot = querySelector('.dot.active');
-    currentDot.classList.remove('active');
-    dotContainer.children[value].classList.add('active');
-  }
- 
+    const currentDot = querySelector(".dot.active");
+    currentDot.classList.remove("active");
+    dotContainer.children[value].classList.add("active");
+  };
+
   // update images
   const updateImageSlider = (number = 0) => {
-    imageInfoContainer.forEach((slide, index) =>  {
+    imageInfoContainer.forEach((slide, index) => {
       slide.style.transform = `translateX(${(index - number) * 100}%)`;
     });
-  }
+  };
 
   // set 3D effect on images when you hover over them
   const setEffectOnImages = () => {
-    images.forEach(image => {
-      eventHandler(image, 'mousemove', (event) => {
+    images.forEach((image) => {
+      eventHandler(image, "mousemove", (event) => {
         const width = image.clientWidth;
         const height = image.clientHeight;
 
-        if(image.classList.contains('active')){
-          // piece of code extracted from @midudev on tiktok account
+        if (image.classList.contains("active")) {
+          // code snippet taken from @midudev on TiKToK account
           const { layerX, layerY } = event;
           const rotationXAxis = ((layerX - width / 2) / width) * 20;
           const rotationYAxis = ((layerY - height / 2) / height) * 20;
@@ -168,10 +167,9 @@ const initApp = () => {
           image.style.transform = template;
           image.style.zIndex = 4;
         }
-        
       });
 
-      eventHandler(image, 'mouseleave', () => {
+      eventHandler(image, "mouseleave", () => {
         const template = `
           perspective(0)
           scale(1)
@@ -180,11 +178,11 @@ const initApp = () => {
         `;
 
         image.style.transform = template;
-      })
-    })
-  }
+      });
+    });
+  };
 
-  setEffectOnImages()
-}
+  setEffectOnImages();
+};
 
-document.addEventListener('DOMContentLoaded', initApp)
+document.addEventListener("DOMContentLoaded", initApp);

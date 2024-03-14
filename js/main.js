@@ -13,7 +13,8 @@ const initApp = () => {
     userInfo: querySelectorAll("[data-user-info"),
     imageInfoContainer: querySelectorAll("[data-image-info]"),
     images: querySelectorAll("[data-expand-image]"),
-    buttons: querySelectorAll("[data-state]"),
+    prevBtn: querySelector("[data-state='prev']"),
+    nextBtn: querySelector("[data-state='next']"),
     dotContainer: querySelector("[data-navigation]"),
   };
 
@@ -23,25 +24,59 @@ const initApp = () => {
     userInfo,
     imageInfoContainer,
     images,
-    buttons,
+    prevBtn,
+    nextBtn,
     dotContainer,
   } = selectors;
 
   let index = 0;
   const LENGTH = imageInfoContainer.length - 1;
 
-  // slider buttons
-  buttons.forEach((button) => {
-    eventHandler(button, "click", () => {
-      button.dataset.state === "next" ? index++ : index--;
+  // sliders
+  const handlePrevImage = (e) => {
+    index--;
+    if(!e.currentTarget) return;
 
-      index > LENGTH ? (index = 0) : index < 0 ? (index = LENGTH) : 0;
+    if(index <= 0){
+      index = 0
+    }
 
-      headingAnimation();
-      updateActiveClass(index);
-      updateImageSlider(index);
-    });
-  });
+    nextBtn.style.opacity = 1;
+    nextBtn.style.pointerEvents = 'all'
+
+    if(index === 0){
+      prevBtn.style.opacity = 0;
+      prevBtn.style.pointerEvents = 'none'
+    }
+
+    headingAnimation();
+    updateActiveClass(index);
+    updateImageSlider(index)
+  }
+
+  const handleNextImage = (e) => {
+    index++;
+    if(!e.currentTarget) return;
+
+    if(index >= LENGTH){
+      index = LENGTH;
+    }
+
+    prevBtn.style.opacity = 1;
+    prevBtn.style.pointerEvents = 'all';
+
+    if(index === LENGTH){
+      nextBtn.style.opacity = 0;
+      nextBtn.style.pointerEvents = 'none';
+    }
+
+    headingAnimation();
+    updateActiveClass(index);
+    updateImageSlider(index)
+  }
+
+  eventHandler(prevBtn, 'click', handlePrevImage);
+  eventHandler(nextBtn, 'click', handleNextImage);
 
   // text animation
   const headingAnimation = () => {

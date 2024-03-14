@@ -68,12 +68,12 @@ img {
     font-size: calc(var(--fnt-sz) * 1.025);
     color: var(--main-color);
     transition: transform 200ms ease;
-    opacity: 0.5;
-    &:hover {
-      opacity: 1; 
-      transform: scale(1.125);
-    }
+    &:hover { transform: scale(1.125); }
     &:active { transform: scale(.98); }
+    &[data-state='prev']{
+      opacity: 0;
+      pointer-events: none
+    }
   }
 }
 

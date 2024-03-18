@@ -1,16 +1,42 @@
 # Image Slider
 
-Photos used in this project were downloaded from [unsplash](https://unsplash.com/es).
+<img src="./assets/images/image-slider.png" alt="image slider" width="100%" height="auto">
+
+## Project Structure
+
+Basic structure of the **Image Slider** project.
+
+```
+└── 📁image-slider
+    └── 📁assets
+        └── 📁images
+            └── large-image-1.jpg
+            └── large-image-2.jpg
+            └── large-image-3.jpg
+            └── large-image-4.jpg
+            └── small-image-1.jpg
+            └── small-image-2.jpg
+            └── small-image-3.jpg
+            └── small-image-4.jpg
+    └── 📁css
+        └── styles.css
+    └── 📁js
+        └── main.js
+    └── index.html
+    └── README.md
+```
+
+> **Note**: photos used in this project were downloaded from [unsplash](https://unsplash.com/es).
 
 I've seen some videos on [YouTube](https://www.youtube.com/) about how to create an *image slider* and they inspired me to create my own. I thank all the programmers who do a magnificent job in sharing their knowladge.
 
-## Technologies used
+### Technologies used
 
 * **HTML5**
 * **CSS3**
 * **JS**
 
-## Custom function
+### Custom function
 
 * query selectors:
   - querySelector()
@@ -36,9 +62,9 @@ I've seen some videos on [YouTube](https://www.youtube.com/) about how to create
   const createElement = (element) => document.createElement(element)
   ```
 
-The custom function mentioned above, intent to avoid to write repeadly *document.querySelector()*, *document.querySelectorAll()* and *element.addEventListener('click', () => {})*, you use need to call these function when you need them, like so.
+With the custom functions mentioned above, they help us avoid repeatedly writing <code>*document.querySelector()*</code>, <code>*document.querySelectorAll()*</code> and <code>*element.addEventListener('click', () => {})*</code>, these functions only need to be called when needed.
 
-When you want to select an element by a **class**, **id**, **element** or **data**-*, you can use *querySelector()* or *querySelectorAll()* custom functions.
+When you want to select an element by **class**, **id**, **element** or **data**-*, you can use the custom functions <code>*querySelector()*</code> or <code>*querySelectorAll()*</code>.
 
 ```js
 const images = querySelectorAll('[data-images]')
@@ -63,13 +89,13 @@ eventHandler(prevBtn, 'click', () => {
 })
 ```
 
-## YouTube channels
+### YouTube channels
 
 To create these custom features, I was inpired by [Dave Gray](https://www.youtube.com/@DaveGrayTeachesCode) on his YouTube channel, on [Traversy Media](https://www.outube.com/@TraversyMedia)'s YouTube channel, on how to create an expandable cards in his [50projects50days](https://50projects50days.com) project, on [developedbyed](https://www.youtube.com/@developedbyed)'s YouTube channel on how to create a text animation.
 
-## Maximum number
+### Maximum number
 
-To get the maximum number of an element, we can use the **.map()**, **.reduce()** and **.filter()** methods, like so.
+To get the maximum number of an element, we use the **.map()**, **.reduce()** and **.filter()** methods, like so.
 
 ```js
 // get maximum length
@@ -79,9 +105,21 @@ const legnth = split
   .reduce((acc, cur) => acc + cur, 48)
 ```
 
-The code snippet above was taken from [meech_ward](https://www.instagram.com/meech_ward?igsh=enN6bDdqcnZhOGxq) Instagram account.
+The code snippet above is a modification of the [meech_ward](https://www.instagram.com/meech_ward?igsh=enN6bDdqcnZhOGxq) Instagram account code, below is his original code.
 
-As we have four headings, we use the **.forEach()** method to iterate over them, so we need create a variable called *length*, to get the maximum number and make the text get a fancy animation and stop when the *length* variable is equal to the variable called *char*.
+```js
+const output = "what's your perfect first date?"
+  .split("")
+  .map(parseInt)
+  .filter(a => a)
+  .reduce((a, b) => a + b)
+  .toString()
+  .split("")
+  .reverse()
+  .join("")
+```
+
+> **Note**: as we have four headings, we use the **.forEach()** method to iterate over them, so we need create a variable called *length*, to get the maximum number and make the text get a fancy animation and stop when the *length* variable is equal to the variable called *char*.
 
 Example:
 

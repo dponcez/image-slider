@@ -10,6 +10,7 @@ Basic structure of the **Image Slider** project.
 └── 📁image-slider
     └── 📁assets
         └── 📁images
+            └── image-slider.png
             └── large-image-1.jpg
             └── large-image-2.jpg
             └── large-image-3.jpg
@@ -62,16 +63,16 @@ I've seen some videos on [YouTube](https://www.youtube.com/) about how to create
   const createElement = (element) => document.createElement(element)
   ```
 
-With the custom functions mentioned above, they help us avoid repeatedly writing <code>*document.querySelector()*</code>, <code>*document.querySelectorAll()*</code> and <code>*element.addEventListener('click', () => {})*</code>, these functions only need to be called when needed.
+With the custom functions mentioned above, they help us avoid repeatedly writing `document.querySelector()`, `document.querySelectorAll()` and `element.addEventListener('click', () => {})`, these functions only need to be called when needed.
 
-When you want to select an element by **class**, **id**, **element** or **data**-*, you can use the custom functions <code>*querySelector()*</code> or <code>*querySelectorAll()*</code>.
+When you want to select an element by **class**, **id**, **element** or **data**-*, you can use the custom functions `querySelector()` or `querySelectorAll()`.
 
 ```js
 const images = querySelectorAll('[data-images]')
 const prevBtn = querySelector('[data-state="prev"]')
 ```
 
-If you want to trigger an event without writing constantly *element.addEventListner()* method, you can use this custom function.
+If you want to trigger an event without writing constantly `element.addEventListner()` method, you can use this custom function.
 
 ```js
 const prevBtn = querySelector('[data-state="prev"');
@@ -170,3 +171,8 @@ const textAnimation = () => {
 
 textAnimation();
 ```
+
+### Final Result
+
+https://github.com/dponcez/image-slider/assets/69610351/3e5213ac-4906-4cee-bf49-23ebb0a74ebf
+

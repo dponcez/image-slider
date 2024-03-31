@@ -149,6 +149,26 @@ const initApp = () => {
         headingAnimation();
         updateActiveClass(i);
         updateImageSlider(i);
+
+        if(i >= 0){
+          prevBtn.style.opacity = 1;
+          prevBtn.style.pointerEvents = 'all'
+        }
+
+        if(i <= LENGTH){
+          nextBtn.style.opacity = 1;
+          nextBtn.style.pointerEvents = 'all'
+        }
+
+        if(i === 0){
+          prevBtn.style.opacity = 0;
+          prevBtn.style.pointerEvents = 'none'
+        }
+
+        if(i === LENGTH){
+          nextBtn.style.opacity = 0;
+          nextBtn.style.pointerEvents = 'none'
+        }
       });
     }
 

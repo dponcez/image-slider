@@ -27,19 +27,19 @@ Basic structure of the **Image Slider** project.
     └── README.md
 ```
 
-> **Note**: photos used in this project were downloaded from [unsplash](https://unsplash.com/es).
+> **NOTE**: photos used in this project were downloaded from [unsplash](https://unsplash.com/es).
 
 I've seen some videos on [YouTube](https://www.youtube.com/) about how to create an *image slider* and they inspired me to create my own. I thank all the programmers who do a magnificent job in sharing their knowladge.
 
 ### Technologies used
 
-* **HTML5**
-* **CSS3**
-* **JS**
+* [HTML5](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [JS](https://developer.mozilla.org/en-US/docs/Web/JavasScript)
 
 ### Custom function
 
-* query selectors:
+* element selectors:
   - querySelector()
   - querySelectorAll()
 
@@ -48,14 +48,16 @@ I've seen some videos on [YouTube](https://www.youtube.com/) about how to create
   const querySelector = (element) => document.querySelector(element);
   const querySelectorAll = (element) => document.querySelectorAll(element);
   ```
-* event handler:
+
+* event trigger:
   - eventHandler()
 
   ```js
   // event handler
   const eventHandler = ($, event, callback, capture = false) => $.addEventListener(event, callback, !!capture);
   ```
-* create element:
+
+* create html element:
   - createElement()
 
   ```js
@@ -63,20 +65,29 @@ I've seen some videos on [YouTube](https://www.youtube.com/) about how to create
   const createElement = (element) => document.createElement(element)
   ```
 
+<<<<<<< HEAD
 With the custom functions mentioned above, they help us avoid repeatedly writing `document.querySelector()`, `document.querySelectorAll()` and `element.addEventListener('click', () => {})`, these functions only need to be called when needed.
 
 When you want to select an element by **class**, **id**, **element** or **data**-*, you can use the custom functions `querySelector()` or `querySelectorAll()`.
+=======
+With the custom functions mentioned above, they help us avoid repeatedly writing ```document.querySelector()```, ```document.querySelectorAll()``` and ```element.addEventListener('click', () => {})```, these functions only need to be called when needed.
+
+When you want to select an element by **class**, **id**, **element** or **data-***, you can use the custom functions ```querySelector()``` or ```querySelectorAll()```.
+>>>>>>> slider
 
 ```js
 const images = querySelectorAll('[data-images]')
 const prevBtn = querySelector('[data-state="prev"]')
 ```
 
+<<<<<<< HEAD
 If you want to trigger an event without writing constantly `element.addEventListner()` method, you can use this custom function.
+=======
+If you want to trigger an event without constantly typing ```element.addEventListner()``` method, you can use the following custom function.
+>>>>>>> slider
 
 ```js
 const prevBtn = querySelector('[data-state="prev"');
-
 const handlePrevImage = () => {}
 
 eventHandler(prevBtn, 'click', handlePrevImage)
@@ -120,7 +131,7 @@ const output = "what's your perfect first date?"
   .join("")
 ```
 
-> **Note**: as we have four headings, we use the **.forEach()** method to iterate over them, so we need create a variable called *length*, to get the maximum number and make the text get a fancy animation and stop when the *length* variable is equal to the variable called *char*.
+> **NOTE**: as we have four headings, we use the **.forEach()** method to iterate over them, so we need to create a variable called *length*, to get the maximum number and make the text get a fancy animation and stop when the *length* variable is equal to the variable called *char*.
 
 Example:
 

@@ -65,26 +65,16 @@ I've seen some videos on [YouTube](https://www.youtube.com/) about how to create
   const createElement = (element) => document.createElement(element)
   ```
 
-<<<<<<< HEAD
-With the custom functions mentioned above, they help us avoid repeatedly writing `document.querySelector()`, `document.querySelectorAll()` and `element.addEventListener('click', () => {})`, these functions only need to be called when needed.
-
-When you want to select an element by **class**, **id**, **element** or **data**-*, you can use the custom functions `querySelector()` or `querySelectorAll()`.
-=======
 With the custom functions mentioned above, they help us avoid repeatedly writing ```document.querySelector()```, ```document.querySelectorAll()``` and ```element.addEventListener('click', () => {})```, these functions only need to be called when needed.
 
 When you want to select an element by **class**, **id**, **element** or **data-***, you can use the custom functions ```querySelector()``` or ```querySelectorAll()```.
->>>>>>> slider
 
 ```js
 const images = querySelectorAll('[data-images]')
 const prevBtn = querySelector('[data-state="prev"]')
 ```
 
-<<<<<<< HEAD
-If you want to trigger an event without writing constantly `element.addEventListner()` method, you can use this custom function.
-=======
 If you want to trigger an event without constantly typing ```element.addEventListner()``` method, you can use the following custom function.
->>>>>>> slider
 
 ```js
 const prevBtn = querySelector('[data-state="prev"');

@@ -38,7 +38,7 @@ I've seen some videos on [YouTube](https://www.youtube.com/) about how to create
 
 ### Custom function
 
-* query selectors:
+* element selectors:
   - querySelector()
   - querySelectorAll()
 
@@ -47,14 +47,16 @@ I've seen some videos on [YouTube](https://www.youtube.com/) about how to create
   const querySelector = (element) => document.querySelector(element);
   const querySelectorAll = (element) => document.querySelectorAll(element);
   ```
-* event handler:
+
+* event trigger:
   - eventHandler()
 
   ```js
   // event handler
   const eventHandler = ($, event, callback, capture = false) => $.addEventListener(event, callback, !!capture);
   ```
-* create element:
+
+* create html element:
   - createElement()
 
   ```js
@@ -64,7 +66,7 @@ I've seen some videos on [YouTube](https://www.youtube.com/) about how to create
 
 With the custom functions mentioned above, they help us avoid repeatedly writing ```document.querySelector()```, ```document.querySelectorAll()``` and ```element.addEventListener('click', () => {})```, these functions only need to be called when needed.
 
-When you want to select an element by **class**, **id**, **element** or **data**-*, you can use the custom functions ```querySelector()``` or ```querySelectorAll()```.
+When you want to select an element by **class**, **id**, **element** or **data-***, you can use the custom functions ```querySelector()``` or ```querySelectorAll()```.
 
 ```js
 const images = querySelectorAll('[data-images]')
@@ -75,7 +77,6 @@ If you want to trigger an event without constantly typing ```element.addEventLis
 
 ```js
 const prevBtn = querySelector('[data-state="prev"');
-
 const handlePrevImage = () => {}
 
 eventHandler(prevBtn, 'click', handlePrevImage)

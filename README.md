@@ -10,6 +10,7 @@ Basic structure of the **Image Slider** project.
 └── 📁image-slider
     └── 📁assets
         └── 📁images
+            └── image-slider.png
             └── large-image-1.jpg
             └── large-image-2.jpg
             └── large-image-3.jpg
@@ -171,3 +172,8 @@ const textAnimation = () => {
 
 textAnimation();
 ```
+
+### Final Result
+
+https://github.com/dponcez/image-slider/assets/69610351/3e5213ac-4906-4cee-bf49-23ebb0a74ebf
+

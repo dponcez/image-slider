@@ -62,7 +62,7 @@ img {
   justify-content: space-evenly;
   max-width: 20rem;
   bottom: 4%;
-  @media (width <= 25.25em) { & { max-width: 10rem } }
+  @media (width <= 26.5625em) { & { max-width: 10rem } }
   .btn {
     justify-content: center;
     padding: 0;
@@ -126,7 +126,7 @@ img {
       margin-block-start: .5rem;
       font: 600 .85rem var(--secondary-fnt);
       transform: translateY(2rem);
-      @media (width <= 25.25em) { & { font-size: calc(var(--pd) * .4) } }
+      @media (width <= 26.5625em) { & { font-size: calc(var(--pd) * .4) } }
       &.fade--bottom__up { 
         transition: opacity 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 500ms;
         animation: smooth-bottom-up 500ms cubic-bezier(0.455, 0.03, 0.515, 0.955) 200ms forwards
@@ -153,9 +153,10 @@ img {
 }
 
 .portrait {
-  width: calc(var(--x) * 5);
-  height: calc(var(--y) * 1.25);
   justify-content: flex-start;
+  width: var(--sz);
+  max-width: calc(var(--x) * 5);
+  height: calc(var(--y) * 1.25);
   right: 5%;
   bottom: calc(var(--btn-sz) * 5);
   gap: calc(var(--gap) * 1.05);
@@ -172,10 +173,9 @@ img {
       box-shadow: .125vmin .125vmin 7pt rgba(255, 255, 255, .5) inset, -.125vmin -.125vmin 7pt rgba(0, 0, 0, .7), .125vmin .125vmin 7pt rgba(0, 0, 0, .5);
     }
   }
-
-  @media (width <= 40.3125em) { & { width: calc(var(--x) * 4.5) } }
-  @media (width <= 35.25em) { & { width: calc(var(--x) * 4) } }
-  @media (width <= 25.25em) { & { width: calc(var(--x) * 3.5) } }
+  @media (width <= 40.3125em) { & { max-width: calc(var(--x) * 4.5) } }
+  @media (width <= 35.25em) { & { max-width: calc(var(--x) * 4) } }
+  @media (width <= 23.4375em) { & { max-width: calc(var(--x) * 3) } }
 }
 
 .dots {
@@ -199,12 +199,23 @@ img {
       background-color: var(--main-color);
     }
   }
-  @media (width <=25.25em) {
+  @media (width <=26.5625em) {
     & {
-      flex-direction: none;
-      right: 1rem;
-      bottom: 0;
-      transform: translateY(50%)
+      justify-content: space-around;
+      flex-direction: row;
+      width: 8ch;
+      height: 2ch;
+      position: relative;
+      left: 50%;
+      bottom: 2.75rem;
+      transform: translateX(100%);
+      .dot {
+        margin: 0;
+        &.active { 
+          width: var(--pd);
+          height: var(--gap)
+        }
+      }
     }
   }
 }

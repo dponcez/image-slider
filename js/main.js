@@ -281,17 +281,6 @@ const initApp = () => {
       })
     })
   }
-
-  const setMatchMedia = () => {
-    const getMediaQuery = window.matchMedia('(max-width: 768px)');
-    eventHandler(getMediaQuery, 'change', (event) => {
-      event.matches ? 
-        setTouchEffectOnImages() :
-        setEffectOnImages();
-    })
-  }
-
-  setMatchMedia()
 };
 
 document.addEventListener("DOMContentLoaded", initApp);

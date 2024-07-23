@@ -237,7 +237,61 @@ const initApp = () => {
     });
   };
 
-  setEffectOnImages();
+  const setTouchEffectOnImages = () => {
+    images.forEach((image) => {
+      eventHandler(image, 'touchstart', (event) => {
+        const touches = [...event.changedTouches];
+        return touches
+      });
+
+      eventHandler(image, 'touchmove', (event) => {
+        const _width = image.clientWidth;
+        const _height = image.clientHeight;
+        const touches = [...event.changedTouches];
+        
+        touches.forEach(touch => {
+          const { clientX, clientY } = touch;
+
+          if(image.classList.contains('active')) {
+            const rotationX = ((clientX - _width / 2) / _width) * 20;
+            const rotationY = ((clientY - _height / 2) / _height) * 20;
+
+            const template = `
+              perspective(31.25em)
+              scale(1, 1.1)
+              rotateX(${rotationX}deg)
+              rotateY(${rotationY}deg)
+            `;
+
+            image.style.transform = template;
+            image.style.zIndex = 4;
+          }
+        })
+      });
+
+      eventHandler(image, 'toucheend', () => {
+        const template = `
+          perspective(0)
+          scale(1)
+          rotateX(0)
+          rotateY(0)
+        `;
+
+        image.style.transform = template
+      })
+    })
+  }
+
+  const setMatchMedia = () => {
+    const getMediaQuery = window.matchMedia('(max-width: 768px)');
+    eventHandler(getMediaQuery, 'change', (event) => {
+      event.matches ? 
+        setTouchEffectOnImages() :
+        setEffectOnImages();
+    })
+  }
+
+  setMatchMedia()
 };
 
 document.addEventListener("DOMContentLoaded", initApp);

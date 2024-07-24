@@ -281,6 +281,18 @@ const initApp = () => {
       })
     })
   }
+
+  const setMatchMedia = () => {
+    const getQueryList = window.matchMedia('(max-width: 768px)');
+
+    eventHandler(getQueryList, 'change', (event) => {
+      event.matches ? 
+        setTouchEffectOnImages() :
+        setEffectOnImages()
+    })
+  }
+
+  setMatchMedia();
 };
 
 document.addEventListener("DOMContentLoaded", initApp);
